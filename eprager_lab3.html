@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sales Tax Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>  
+    <header>
+        <h3>ITMD-565 Lab 3 - Emma Prager - eprager@hawk.iit.edu</h3>
+        <h1>Sales Tax Calculator</h1>
+    </header>
+    <div id="form">
+        <p id="instr">Enter Subtotal and Tax Rate and click the Calculate button to show the sales tax amount and the total. Click the clear button to clear out all form fields. Tax rate should be a percentage but do not enter a % sign in the tax rate box.</p>
+        <form action="" method="POST">
+            <label>Subtotal: $ <input type="number" id="subtotal" name="subtotal"></label><br>  <p></p>
+            <label>Tax Rate: % <input type="number" id="taxrate" name="tax-rate"></label><br>  <p></p>
+            <label>Sales Tax: $ <input type="number" id="salestax" name="sales-tax" disabled></label><br>    <p></p>
+            <label>Total: $ <input type="number" id="total" name="total" disabled></label><br>    <p></p>
+            <input type="button" id="submit" class="button" value="Calculate Tax and Total">
+            <input type="reset" id="clear" class="button" value="Clear">
+        </form>
+    </div>
+
+    <img src="https://www.kitteryme.gov/sites/kitteryme/files/resize/imce/tax_image-800x400.jpg" alt="tax">
+
+    <footer>&copy; 2020 Emma Prager | eprager@hawk.iit.edu</footer>
+
+    <script>
+        function submitIt () {
+            var subtotal = document.getElementById("subtotal").value;
+            var taxrate = document.getElementById("taxrate").value;
+            var salestax = 0;
+            var total = 0;
+            if(subtotal > 0 && taxrate > 0 && taxrate <= 20) {
+                salestax = subtotal * taxrate / 100;
+                total = Number(subtotal) + Number(salestax);
+                document.getElementById("salestax").value  = salestax;
+                document.getElementById("total").value  = total;
+            }
+            else if(subtotal <= 0 && taxrate > 0 && taxrate <= 20){
+                alert("Please enter a valid subtotal. Subtotal should be greater than 0.");
+                document.getElementById("subtotal").focus();
+            }
+            else if(subtotal > 0 && taxrate <= 0 || taxrate > 20){
+                alert("Please enter a valid tax rate. Tax rate should be greater than 0 and less than or equal to 20.");
+                document.getElementById("taxrate").focus();
+            }
+            else {
+                alert("Please enter a valid subtotal and tax rate.  Subtotal should be greater than 0.  Tax rate should be greater than 0 and less than or equal to 20.");
+                document.getElementById("subtotal").focus();
+            }
+        }
+
+        function clearIt() {
+            document.getElementById("subtotal").focus();
+            //the button type is reset which automatically resets all of the fields on click
+        }
+
+        function init() {
+            taxrate.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    document.getElementById("submit").click();
+                }
+            });
+            subtotal.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    document.getElementById("submit").click();
+                }
+            });
+            document.getElementById("submit").addEventListener("click", submitIt);
+            document.getElementById("clear").addEventListener("click", clearIt);
+        }
+        
+        window.onload = function() {
+            init();
+            document.getElementById("subtotal").focus();
+        };
+
+        // tested  with google chrome Version 79.0.3945.130 (Official Build) (64-bit)
+        
+    </script>
+</body>
+</html>

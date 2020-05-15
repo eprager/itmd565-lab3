@@ -1,0 +1,102 @@
+body {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  border: 2px solid black;
+  background: lightblue;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 0 0 0 0;
+  margin-bottom: 0.25em;
+}
+
+#form {
+  border: 2px solid black;
+  width: 60%;
+  margin: 0 auto 0 auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 2%;
+  padding-top: 0%;
+  background-color: lightblue;
+}
+
+#instr {
+  text-align: justify;
+}
+
+form {
+  text-align: right;
+  margin: 0 auto 0 auto;
+  width: 40%; 
+  font-weight: bold;
+}
+
+input[type="number"]:disabled {
+  background: lightgrey;
+  color: black;
+}
+
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button:hover {
+  background-color: darkblue;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+img { 
+  width: 40%;
+  border-radius: 5%;
+}
+
+footer {
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  color: lightblue;
+}
+
+@media screen and (max-width: 952px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  #form {
+    width: 90%; 
+  }
+
+  img { 
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  form {
+    width: 60%; 
+  }
+
+  img { 
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 432px) {
+  form {
+    width: 90%; 
+  }
+
+  img { 
+    width: 90%;
+  }
+}
